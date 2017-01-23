@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from django.forms import model_to_dict
 from django.test import TestCase
 
+from admin_auto_tests.utils import test_base_class
+
 
 class AdminTestMixIn(object):
     field_values = None
@@ -132,7 +134,9 @@ class ModelAdminTestMixIn(AdminTestMixIn):
 
 class AdminTestCase(AdminTestMixIn, TestCase):
     pass
+AdminTestCase = test_base_class(AdminTestCase)
 
 
 class ModelAdminTestCase(ModelAdminTestMixIn, TestCase):
     pass
+ModelAdminTestCase = test_base_class(ModelAdminTestCase)
