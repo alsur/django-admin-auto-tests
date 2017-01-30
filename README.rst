@@ -13,7 +13,7 @@ Create tests to check the correct functioning of your Admin pages. Includes supp
 
 Using it is as easy as:
 
-.. code-block::python
+.. code-block:: python
 
     class MyModelAdminTestCase(ModelAdminTestCase):
         model = MyModel
@@ -21,7 +21,7 @@ Using it is as easy as:
 
 That is all! But you can personalize it:
 
-.. code-block::python
+.. code-block:: python
 
     class MyModelAdminTestCase(ModelAdminTestCase):
         # The response code to return. This is useful
