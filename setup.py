@@ -20,8 +20,8 @@ EMAIL = 'nekmo@alsur.es'
 
 # Información del paquete
 PACKAGE_NAME = 'django-admin-auto-tests'
-PACKAGE_DOWNLOAD_URL = 'https://github.com/Nekmo/django-admin-auto-tests/archive/master.zip'  # .tar.gz
-URL = 'https://github.com/Nekmo/django-admin-auto-tests'
+PACKAGE_DOWNLOAD_URL = 'https://github.com/alsur/django-admin-auto-tests/archive/master.zip'  # .tar.gz
+URL = 'https://github.com/alsur/django-admin-auto-tests'
 STATUS_LEVEL = 3  # 1:Planning 2:Pre-Alpha 3:Alpha 4:Beta 5:Production/Stable 6:Mature 7:Inactive
 KEYWORDS = ['django', 'admin', 'testing', 'test', 'automatic', 'auto', 'generator']  # Palabras clave
 # https://github.com/github/choosealicense.com/tree/gh-pages/_licenses
