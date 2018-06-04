@@ -2,7 +2,11 @@ from unittest import SkipTest
 
 from autofixture import AutoFixture
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except:
+    from django.urls import reverse
+
 from django.forms import model_to_dict
 from django.test import TestCase
 
