@@ -1,6 +1,6 @@
 from unittest import SkipTest
 
-from autofixture import AutoFixture
+import factory
 from django.contrib.auth import get_user_model
 try:
     from django.core.urlresolvers import reverse
@@ -13,6 +13,14 @@ from django.test import TestCase
 from admin_auto_tests.utils import test_base_class
 
 
+def create_factory(model_class, **kwargs):
+    class Factory(factory.django.DjangoModelFactory):
+        class Meta:
+            model = model_class
+
+    return Factory
+
+
 class AdminTestMixIn(object):
     field_values = None
     model = None
@@ -20,8 +28,8 @@ class AdminTestMixIn(object):
     def create(self, commit=True, model=None, follow_fk=True, generate_fk=True, field_values=None):
         model = model or self.model
         field_values = field_values or self.field_values
-        instance = AutoFixture(model, follow_fk=follow_fk, generate_fk=generate_fk,
-                               field_values=field_values).create_one(commit)
+        instance = create_factory(model, follow_fk=follow_fk, generate_fk=generate_fk,
+                               field_values=field_values)()
         return instance
 
     def create_user(self, is_staff=False, is_superuser=False, is_active=True):
