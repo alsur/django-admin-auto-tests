@@ -2,6 +2,8 @@ from unittest import SkipTest
 
 import factory
 from django.contrib.auth import get_user_model
+from model_mommy import mommy
+
 try:
     from django.core.urlresolvers import reverse
 except:
@@ -27,10 +29,14 @@ class AdminTestMixIn(object):
 
     def create(self, commit=True, model=None, follow_fk=True, generate_fk=True, field_values=None):
         model = model or self.model
-        field_values = field_values or self.field_values
-        instance = create_factory(model, follow_fk=follow_fk, generate_fk=generate_fk,
-                               field_values=field_values)()
+        field_values = field_values or self.field_values or {}
+        # instance = self.create_factory(model)(**field_values)
+        instance = mommy.make(model, **field_values)
         return instance
+
+    def create_factory(self, model=None):
+        model = model or self.model
+        return create_factory(model)
 
     def create_user(self, is_staff=False, is_superuser=False, is_active=True):
         return self.create(model=get_user_model(), field_values=dict(
@@ -74,7 +80,7 @@ class ModelAdminTestMixIn(AdminTestMixIn):
                       args=(instance.pk,))
 
     def create_instance_data(self):
-        instance = self.create(False)
+        instance = self.create()
         return {x: y for x, y in filter(lambda x: x[1], model_to_dict(instance).items())
                 if not x in self.form_data_exclude_fields}
 
