@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Package description
-"""
+"""Package description"""
 from setuptools import setup, find_packages
 from distutils.util import convert_path
 from fnmatch import fnmatchcase
