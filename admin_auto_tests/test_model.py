@@ -2,7 +2,10 @@ from unittest import SkipTest
 
 import factory
 from django.contrib.auth import get_user_model
-from model_mommy import mommy
+try:
+    from model_bakery import baker as mommy
+except ImportError:
+    from model_mommy import mommy
 
 try:
     from django.core.urlresolvers import reverse
